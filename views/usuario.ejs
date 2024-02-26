@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/usuario.css">
+</head>
+<body>
+    <h1 class="h1">LISTA DE USUÁRIOS</h1>
+    <div id="userInfo"></div>
+    <br>
+
+
+    <script src="/js/usuario.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    var storedUsers = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+
+    if (storedUsers.length > 0) {
+        var userInfoContainer = document.getElementById('userInfo');
+
+
+        storedUsers.forEach(function (storedUser) {
+            var userDiv = document.createElement('div');
+            userDiv.classList.add('user-info-box');
+
+
+            var nameParagraph = document.createElement('p');
+            var emailParagraph = document.createElement('p');
+            var passwordParagraph = document.createElement('p');
+
+
+            nameParagraph.textContent = 'Nome: ' + storedUser.nome;
+            emailParagraph.textContent = 'Email: ' + storedUser.email;
+            passwordParagraph.textContent = 'Senha: ' + storedUser.senha;
+
+
+            userDiv.appendChild(nameParagraph);
+            userDiv.appendChild(emailParagraph);
+            userDiv.appendChild(passwordParagraph);
+
+
+            var deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Excluir';
+            deleteButton.addEventListener('click', function () {
+               
+                storedUsers = storedUsers.filter(function (user) {
+                    return user.email !== storedUser.email;
+                });
+
+
+                localStorage.setItem('usuarios', JSON.stringify(storedUsers));
+
+
+                window.location.reload();
+            });
+           
+            userDiv.appendChild(deleteButton);
+
+
+            userInfoContainer.appendChild(userDiv);
+        });
+    }
+
+
+    var btnAdicionarUsuario = document.createElement('button');
+    btnAdicionarUsuario.textContent = 'Adicionar Usuário';
+    document.body.appendChild(btnAdicionarUsuario);
+    btnAdicionarUsuario.addEventListener('click', function () {
+        window.location.href = 'http://localhost:1000/cadastro';
+    });
+});
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,55 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #f8f9fa;
+    color: #dc3545;
+    background: url('fundo-site.png');
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+h1 {
+    color: #007bff;
+}
+
+
+.user-info-box {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 400px;
+    width: 100%;
+}
+
+
+p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #495057;
+}
+
+
+button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+button:hover {
+    background-color: #c82333;
+}
